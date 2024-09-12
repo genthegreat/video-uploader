@@ -62,9 +62,9 @@ export default function UploadForm() {
 
     return (
         <>
-            <Toaster position="top-right" reverseOrder={false} />
-            <form onSubmit={handleSubmit} className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-                <h1>Upload to Youtube</h1>
+            <Toaster position="top-center" reverseOrder={false} />
+            <form onSubmit={handleSubmit} className="flex flex-col gap-8 row-start-2 items-center sm:items-start">                
+                <h2 className='w-full text-center'>Upload to Youtube</h2>
                 <FileUploader
                     handleChange={handleChange}
                     name="file"

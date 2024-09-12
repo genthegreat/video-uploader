@@ -32,7 +32,7 @@ export async function GET(request: NextRequest) {
       const url = new URL(request.url);
       const baseUrl = `${url.protocol}//${url.host}`;
       const { data } = await user.userinfo.get();
-      // return NextResponse.json({ success: true, name: data.name });
+      console.log(data)
       return NextResponse.redirect(`${baseUrl}/upload`);
     } catch (err) {
       console.error("Failed to fetch user info", err);

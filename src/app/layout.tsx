@@ -42,7 +42,7 @@ export default function RootLayout({
         <main className="container mx-auto">
           {children}
         </main>
-        <footer className="relative row-start-3 flex gap-6 flex-wrap items-center justify-center bottom-0">
+        <footer className="relative bg-gray-300 py-1.5 row-start-3 flex gap-10 flex-wrap items-center justify-center bottom-0">
           <a
             className="flex items-center gap-2 hover:underline hover:underline-offset-4"
             href="#"
