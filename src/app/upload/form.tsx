@@ -63,8 +63,11 @@ export default function UploadForm() {
     return (
         <>
             <Toaster position="top-center" reverseOrder={false} />
-            <form onSubmit={handleSubmit} className="flex flex-col gap-8 row-start-2 items-center sm:items-start">                
-                <h2 className='w-full text-center'>Upload to Youtube</h2>
+            <form onSubmit={handleSubmit} className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+                <div className='w-full pt-2 text-center'>
+                    <h2 className=' mb-0'>Upload to Youtube</h2>
+                    <p className='text-xs text-gray-500 my-0'>(*File upload limit is 50mb.)</p>
+                </div>
                 <FileUploader
                     handleChange={handleChange}
                     name="file"
