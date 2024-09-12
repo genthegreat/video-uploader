@@ -29,8 +29,11 @@ export async function GET(request: NextRequest) {
     oauth2Client.setCredentials({ access_token: cookies });
 
     try {
+      const url = new URL(request.url);
+      const baseUrl = `${url.protocol}//${url.host}`;
       const { data } = await user.userinfo.get();
-      return NextResponse.json({ success: true, name: data.name });
+      // return NextResponse.json({ success: true, name: data.name });
+      return NextResponse.redirect(`${baseUrl}/upload`);
     } catch (err) {
       console.error("Failed to fetch user info", err);
       return NextResponse.json({

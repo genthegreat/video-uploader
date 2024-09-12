@@ -28,11 +28,11 @@ body {
 }
 
 input {
-  @apply appearance-none block w-full border border-gray-900 rounded-lg h-10 p-4;
+  @apply appearance-none block w-full border border-gray-900 rounded-lg h-10 p-4 dark:text-black;
 }
 
 textarea {
-  @apply appearance-none block w-full border border-gray-900 rounded-lg p-4;
+  @apply appearance-none block w-full border border-gray-900 rounded-lg p-4 dark:text-black;
 }
 
 button {

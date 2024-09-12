@@ -76,7 +76,6 @@ export default function UploadForm() {
                     placeholder="Title"
                     value={videoDetails.title}
                     onChange={(e) => setVideoDetails({ ...videoDetails, title: e.target.value })}
-                    className=""
                 />
                 <textarea
                     placeholder="Description"
