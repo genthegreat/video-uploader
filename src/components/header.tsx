@@ -10,7 +10,7 @@ export default function Header({ isAuthenticated }: { isAuthenticated: boolean }
         </li>
         <li className="text-lg my-2">
           <a
-            href={isAuthenticated ? '/api/logout' : '/api/youtube/auth'}
+            href={isAuthenticated ? '/api/youtube/logout' : '/api/youtube/auth'}
             className={`my-2 py-2 px-4 border border-transparent rounded-md text-sm font-medium ${isAuthenticated ? 'bg-red-600 hover:bg-red-700 focus:ring-red-500' : 'bg-green-600 hover:bg-green-700 focus:ring-green-500'} focus:outline-none focus:ring-2 focus:ring-offset-2`}
           >
             {isAuthenticated ? 'Logout' : 'Login'}
