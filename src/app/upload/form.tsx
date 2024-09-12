@@ -3,10 +3,13 @@
 import { useState } from 'react';
 import { FileUploader } from "react-drag-drop-files";
 import { toast, Toaster } from 'react-hot-toast';
+import { useRouter } from 'next/navigation';
 
 const fileTypes = ["MOV", "MPEG-1", "MPEG-2", "MPEG4", "MP4", "MPG", "AVI", "WMV", "FLV", "WEBM"];
 
 export default function UploadForm() {
+    const router = useRouter();
+
     const [videoFile, setVideoFile] = useState<File | null>(null);
     const [uploading, setUploading] = useState(false);
     const [videoDetails, setVideoDetails] = useState({
@@ -23,7 +26,7 @@ export default function UploadForm() {
         e.preventDefault();
         setUploading(true)
 
-        try {            
+        try {
             const videoData = new FormData();
             if (videoFile) {
                 videoData.append('videoFile', videoFile);
@@ -43,7 +46,8 @@ export default function UploadForm() {
             const result = await response.json();
             if (result.success) {
                 toast.success(`Video uploaded successfully: ${result.videoId}`);
-                return <>Success</>
+                // Redirect to the video page
+                router.push(`https://youtu.be/${result.videoId}`);
             } else {
                 toast.error(`Video upload failed: ${result.error}`);
                 throw result.error
@@ -57,34 +61,36 @@ export default function UploadForm() {
     };
 
     return (
-
-        <form onSubmit={handleSubmit} className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-            <h1>Upload to Youtube</h1>
-            <FileUploader
-                handleChange={handleChange}
-                name="file"
-                types={fileTypes}
-                required={true}
-            />
-            <input
-                type="text"
-                placeholder="Title"
-                value={videoDetails.title}
-                onChange={(e) => setVideoDetails({ ...videoDetails, title: e.target.value })}
-                className=""
-            />
-            <textarea
-                placeholder="Description"
-                value={videoDetails.description}
-                onChange={(e) => setVideoDetails({ ...videoDetails, description: e.target.value })}
-            />
-            <input
-                type="text"
-                placeholder="Tags (comma-separated)"
-                value={videoDetails.tags}
-                onChange={(e) => setVideoDetails({ ...videoDetails, tags: e.target.value })}
-            />
-            <button type="submit" disabled={uploading}>{uploading ? 'Uploading...' : 'Upload'}</button>
-        </form>
+        <>
+            <Toaster position="top-right" reverseOrder={false} />
+            <form onSubmit={handleSubmit} className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+                <h1>Upload to Youtube</h1>
+                <FileUploader
+                    handleChange={handleChange}
+                    name="file"
+                    types={fileTypes}
+                    required={true}
+                />
+                <input
+                    type="text"
+                    placeholder="Title"
+                    value={videoDetails.title}
+                    onChange={(e) => setVideoDetails({ ...videoDetails, title: e.target.value })}
+                    className=""
+                />
+                <textarea
+                    placeholder="Description"
+                    value={videoDetails.description}
+                    onChange={(e) => setVideoDetails({ ...videoDetails, description: e.target.value })}
+                />
+                <input
+                    type="text"
+                    placeholder="Tags (comma-separated)"
+                    value={videoDetails.tags}
+                    onChange={(e) => setVideoDetails({ ...videoDetails, tags: e.target.value })}
+                />
+                <button type="submit" disabled={uploading}>{uploading ? 'Uploading...' : 'Upload'}</button>
+            </form>
+        </>
     );
 }

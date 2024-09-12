@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import Image from "next/image";
+import { cookies } from 'next/headers';
 import "./globals.css";
+import Header from "@/component/header";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -24,12 +26,20 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Get cookies
+  const cookieStore = cookies();
+  const token = cookieStore.get('token')?.value;
+
+  // Determine authentication status
+  const isAuthenticated = !!token;
+
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <Header isAuthenticated={isAuthenticated} />
+        <main>{children}</main>
         <footer className="relative row-start-3 flex gap-6 flex-wrap items-center justify-center pb-20 bottom-0">
           <a
             className="flex items-center gap-2 hover:underline hover:underline-offset-4"
