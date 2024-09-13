@@ -39,31 +39,63 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Header isAuthenticated={isAuthenticated} />
-        <main className="container mx-auto">
+        <main className="container min-h-96 m-5">
           {children}
         </main>
         <footer className="relative bg-gray-300 py-1.5 row-start-3 flex gap-10 flex-wrap items-center justify-center bottom-0">
           <a
             className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-            href="#"
-            rel="noopener noreferrer"
+            href="https://github.com/genthegreat/video-uploader"
+            target="_blank"
           >
-            Docs
+            <Image
+              aria-hidden
+              src="/file.svg"
+              alt="File icon"
+              width={16}
+              height={16}
+            />
+            Github
           </a>
           <a
             className="flex items-center gap-2 hover:underline hover:underline-offset-4"
             href="https://princekwesi.website"
             target="_blank"
-            rel="noopener noreferrer"
           >
             <Image
               aria-hidden
-              src="https://nextjs.org/icons/globe.svg"
+              src="/globe.svg"
               alt="Globe icon"
               width={16}
               height={16}
             />
             Meet the Developer
+          </a>
+          <a
+            className="flex items-center gap-2 hover:underline hover:underline-offset-4"
+            href="/privacy"
+          >
+            <Image
+              aria-hidden
+              src="/window.svg"
+              alt="Window icon"
+              width={16}
+              height={16}
+            />
+            Privacy Policy
+          </a>
+          <a
+            className="flex items-center gap-2 hover:underline hover:underline-offset-4"
+            href="/terms"
+          >
+            <Image
+              aria-hidden
+              src="/window.svg"
+              alt="Window icon"
+              width={16}
+              height={16}
+            />
+            Terms & Conditions
           </a>
         </footer>
       </body>
