@@ -1,3 +1,10 @@
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: "Privacy Policy | Video Uploader by Prince Kwesi",
+    description: "Privacy Policy",
+};  
+
 export default function PrivacyPage() {
     return (
         <div className="container flex flex-col gap-4">

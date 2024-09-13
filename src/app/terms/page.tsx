@@ -1,3 +1,10 @@
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: "Terms & Conditions | Video Uploader by Prince Kwesi",
+    description: "Terms of Service",
+};  
+
 export default function TermsPage() {
     return (
         <div className="container flex flex-col">
