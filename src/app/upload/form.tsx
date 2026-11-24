@@ -18,8 +18,8 @@ export default function UploadForm() {
         tags: '',
     });
 
-    const handleChange = (file: File) => {
-        setVideoFile(file);
+    const handleChange = (file: File | File[]) => {
+        setVideoFile(Array.isArray(file) ? file[0] : file);
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
