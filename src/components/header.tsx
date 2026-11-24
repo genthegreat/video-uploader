@@ -1,12 +1,14 @@
 "use client"
 
+import Link from "next/link";
+
 export default function Header({ isAuthenticated }: { isAuthenticated: boolean }) {
 
   return (
     <header className="bg-gray-100">
       <ul className="container flex flex-wrap items-center justify-between mx-auto p-2 space-x-6 ms-5">
         <li className="text-lg my-2">
-          <a href="/" className="my-2 py-2 px-4 border border-transparent rounded-md text-sm text-white font-medium bg-black hover:bg-gray-900 focus:ring-black focus:outline-none focus:ring-2 focus:ring-offset-2">Home</a>
+          <Link href="/" className="my-2 py-2 px-4 border border-transparent rounded-md text-sm text-white font-medium bg-black hover:bg-gray-900 focus:ring-black focus:outline-none focus:ring-2 focus:ring-offset-2">Home</Link>
         </li>
         <li className="text-lg my-2">
           <a

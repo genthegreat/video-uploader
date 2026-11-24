@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };  
 
 export default async function UploadPage() {
-    const cookieStore = cookies()
+    const cookieStore = await cookies()
     const authed = cookieStore.get('token')
 
     if (!authed) return (

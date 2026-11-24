@@ -21,13 +21,13 @@ export const metadata: Metadata = {
   description: "Uploading to Youtube",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   // Get cookies
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const token = cookieStore.get('token')?.value;
 
   // Determine authentication status

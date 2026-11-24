@@ -33,7 +33,7 @@ export async function GET(request: NextRequest) {
     const response = NextResponse.redirect(`${baseUrl}/upload`);
 
     // Set cookies
-    const cookieStore = cookies();
+    const cookieStore = await cookies();
     cookieStore.set("token", token, {
       httpOnly: true,
       path: "/",
